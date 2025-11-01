@@ -1,6 +1,8 @@
 import { sql } from './client';
 import { User } from '../../application/user/user';
 import { UserRepository } from '@/application/user/userRepository';
+import { Loan, LoanStatus } from '@/application/loan/loan';
+import { LoanDB, mapLoansDBToLoans } from './loanRepository';
 
 export interface UserDB {
     id: number;
@@ -21,6 +23,7 @@ export interface LoanWithBookDB {
     start_date: string;
     end_date: string;
     return_date: string | null;
+    status: LoanStatus;
     late_days: number;
     fine: number;
 }
@@ -68,6 +71,13 @@ export class PostgresUserRepository implements UserRepository {
             DELETE FROM users WHERE id = ${id}
         `;
         return result.count > 0;
+    }
+
+    async getUserLoans(userId: number): Promise<Loan[]> {
+        const result = await sql<LoanDB[]>`
+            SELECT * from loan_detailed_view WHERE user_id = ${userId}
+        `;
+        return mapLoansDBToLoans(result);
     }
     
 }
