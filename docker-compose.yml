@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  database:
+    image: postgres:15
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: library
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  api:
+    container_name: library-api
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: database
+      DATABASE_PORT: 5432
+      DATABASE_USER: admin
+      DATABASE_PASSWORD: admin
+      DATABASE_NAME: library
+    depends_on:
+      - database
+
+volumes:
+  postgres-data:
