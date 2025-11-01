@@ -7,7 +7,7 @@
     "clear": "rm -rf dist",
     "start": "npm run build && node dist/index.js",
     "start:container": "docker compose up --build -d",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:local": "jest --coverage",
     "lint": "npx eslint src/**/*.ts",
     "lint:fix": "npx eslint src/**/*.ts --fix"
   },
@@ -17,13 +17,16 @@
   "description": "",
   "devDependencies": {
     "@types/express": "^5.0.2",
+    "@types/jest": "^30.0.0",
     "@types/module-alias": "^2.0.4",
     "@types/node": "^22.7.2",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^9.39.0",
+    "jest": "^30.2.0",
     "module-alias": "^2.2.3",
+    "ts-jest": "^29.4.5",
     "typescript": "^5.6.2"
   },
   "_moduleAliases": {
