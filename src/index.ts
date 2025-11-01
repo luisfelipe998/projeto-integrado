@@ -6,6 +6,7 @@ import { PostgresUserRepository } from './infra/postgres/userRepository';
 import { PostgresBookRepository } from './infra/postgres/bookRepository';
 import { PostgresLoanRepository } from './infra/postgres/loanRepository';
 import { connect } from './infra/postgres/client';
+import { basicAuthMiddleware } from './middleware/auth';
 
 
 const app = express();
@@ -26,22 +27,22 @@ app.get('/healthz', (_, res) => {
     res.status(200).json({ message: 'Server is healthy' });
 });
 
-app.get('/users', userController.getAllUsers);
-app.get('/users/:id', userController.getUserById);
-app.get('/users/:id/loans', userController.getUserLoans);
-app.post('/users', userController.createUser);
-app.delete('/users/:id', userController.deleteUser);
+app.get('/users', basicAuthMiddleware, userController.getAllUsers);
+app.get('/users/:id', basicAuthMiddleware, userController.getUserById);
+app.get('/users/:id/loans', basicAuthMiddleware, userController.getUserLoans);
+app.post('/users', basicAuthMiddleware, userController.createUser);
+app.delete('/users/:id', basicAuthMiddleware, userController.deleteUser);
 
-app.get('/books', bookController.getAllBooks);
-app.get('/books/:id', bookController.getBookById);
-app.post('/books', bookController.createBook);
-app.put('/books/:id', bookController.updateBook);
-app.delete('/books/:id', bookController.deleteBook);
+app.get('/books', basicAuthMiddleware, bookController.getAllBooks);
+app.get('/books/:id', basicAuthMiddleware, bookController.getBookById);
+app.post('/books', basicAuthMiddleware, bookController.createBook);
+app.put('/books/:id', basicAuthMiddleware, bookController.updateBook);
+app.delete('/books/:id', basicAuthMiddleware, bookController.deleteBook);
 
-app.get('/loans', loanController.getAllLoans);
-app.get('/loans/:id', loanController.getLoanById);
-app.post('/loans', loanController.createLoan);
-app.put('/loans/:id/return', loanController.returnLoan);
+app.get('/loans', basicAuthMiddleware, loanController.getAllLoans);
+app.get('/loans/:id', basicAuthMiddleware, loanController.getLoanById);
+app.post('/loans', basicAuthMiddleware, loanController.createLoan);
+app.put('/loans/:id/return', basicAuthMiddleware, loanController.returnLoan);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => errorHandler(err, req, res, next));
 
