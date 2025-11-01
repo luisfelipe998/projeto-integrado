@@ -1,0 +1,20 @@
+meta {
+  name: Delete User by Id (non existent)
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{host}}/users/1000
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+assert {
+  res.status: eq 404
+}

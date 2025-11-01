@@ -1,0 +1,27 @@
+meta {
+  name: Get Books
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/books
+  body: none
+  auth: basic
+}
+
+params:query {
+  ~status: available
+  ~status: rented
+  ~status: late
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+assert {
+  res.body.length: gt 0
+  res.status: eq 200
+}

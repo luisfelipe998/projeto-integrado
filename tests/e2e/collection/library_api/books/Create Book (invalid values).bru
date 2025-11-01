@@ -1,0 +1,25 @@
+meta {
+  name: Create Book (invalid values)
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{host}}/books
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+  }
+}
+
+assert {
+  res.status: eq 400
+}

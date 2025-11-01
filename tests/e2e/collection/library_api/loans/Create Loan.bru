@@ -1,0 +1,33 @@
+meta {
+  name: Create Loan
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/loans
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+    "userId": 3,
+    "bookId": 4,
+    "startDate": "2025-05-15",
+    "endDate": "2025-05-20"
+  }
+}
+
+vars:post-response {
+  createdLoanId: res.body.id
+}
+
+assert {
+  res.status: eq 201
+}

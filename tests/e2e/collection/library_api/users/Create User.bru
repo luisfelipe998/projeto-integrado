@@ -1,0 +1,33 @@
+meta {
+  name: Create User
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/users
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+    "name": "Foo Bar",
+    "email": "foo.bar4@example.com",
+    "cpf": "000.111.222-36",
+    "address": "Rua das Flores, 100, Centro"
+  }
+}
+
+vars:post-response {
+  createdUserId: res.body.id
+}
+
+assert {
+  res.status: eq 201
+}

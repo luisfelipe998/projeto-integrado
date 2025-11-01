@@ -1,0 +1,25 @@
+meta {
+  name: Create User (invalid values)
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{host}}/users
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+  }
+}
+
+assert {
+  res.status: eq 400
+}
