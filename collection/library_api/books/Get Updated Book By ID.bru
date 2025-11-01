@@ -1,0 +1,20 @@
+meta {
+  name: Get Updated Book By ID
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{host}}/books/{{createdBookId}}
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+assert {
+  res.body.id: eq {{createdBookId}}
+}

@@ -1,0 +1,20 @@
+meta {
+  name: Get Book By ID (non existent)
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{host}}/books/1000
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+assert {
+  res.status: eq 404
+}

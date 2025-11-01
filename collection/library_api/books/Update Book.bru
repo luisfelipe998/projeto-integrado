@@ -1,0 +1,27 @@
+meta {
+  name: Update Book
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{host}}/books/{{createdBookId}}
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+    "title": "Clean Code 2nd edition"
+  }
+}
+
+assert {
+  res.body.id: eq {{createdBookId}}
+  res.status: eq 200
+}

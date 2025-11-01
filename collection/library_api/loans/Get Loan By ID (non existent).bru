@@ -1,16 +1,20 @@
 meta {
-  name: Get Users Loans
+  name: Get Loan By ID (non existent)
   type: http
   seq: 5
 }
 
 get {
-  url: {{host}}/users/3/loans
+  url: {{host}}/loans/1000
   body: none
-  auth: none
+  auth: basic
 }
 
 auth:basic {
   username: {{username}}
   password: {{password}}
+}
+
+assert {
+  res.status: eq 404
 }

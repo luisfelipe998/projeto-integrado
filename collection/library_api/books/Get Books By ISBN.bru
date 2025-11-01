@@ -1,17 +1,17 @@
 meta {
-  name: Get Books By Title
+  name: Get Books By ISBN
   type: http
-  seq: 2
+  seq: 3
 }
 
 get {
-  url: {{host}}/books?title=Clean Code
+  url: {{host}}/books?isbn=978-0132350884
   body: none
   auth: basic
 }
 
 params:query {
-  title: Clean Code
+  isbn: 978-0132350884
   ~status: available
   ~status: rented
   ~status: late
@@ -20,4 +20,10 @@ params:query {
 auth:basic {
   username: {{username}}
   password: {{password}}
+}
+
+assert {
+  res.body.length: eq 1
+  res.body[0].isbn: eq 978-0132350884
+  res.status: eq 200
 }

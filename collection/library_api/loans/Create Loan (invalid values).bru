@@ -1,0 +1,25 @@
+meta {
+  name: Create Loan (invalid values)
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{host}}/loans
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+  }
+}
+
+assert {
+  res.status: eq 400
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Return Loan
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{host}}/loans/{{createdLoanId}}/return
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+    "title": "Clean Code"
+  }
+}
+
+assert {
+  res.status: eq 200
+}

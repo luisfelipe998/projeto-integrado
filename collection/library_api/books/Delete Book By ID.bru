@@ -1,16 +1,21 @@
 meta {
   name: Delete Book By ID
   type: http
-  seq: 7
+  seq: 8
 }
 
 delete {
-  url: {{host}}/books/2
+  url: {{host}}/books/{{createdBookId}}
   body: none
-  auth: none
+  auth: basic
 }
 
 auth:basic {
   username: {{username}}
   password: {{password}}
+}
+
+assert {
+  res.body: isEmpty
+  res.status: eq 204
 }

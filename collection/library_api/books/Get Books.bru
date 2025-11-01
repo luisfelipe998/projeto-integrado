@@ -1,17 +1,16 @@
 meta {
-  name: Get Books By ISBN
+  name: Get Books
   type: http
-  seq: 3
+  seq: 1
 }
 
 get {
-  url: {{host}}/books?isbn=978-0132350884
+  url: {{host}}/books
   body: none
-  auth: none
+  auth: basic
 }
 
 params:query {
-  isbn: 978-0132350884
   ~status: available
   ~status: rented
   ~status: late
@@ -20,4 +19,9 @@ params:query {
 auth:basic {
   username: {{username}}
   password: {{password}}
+}
+
+assert {
+  res.body.length: gt 0
+  res.status: eq 200
 }

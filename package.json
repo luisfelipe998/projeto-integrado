@@ -5,9 +5,12 @@
   "scripts": {
     "build": "npm run clear && npx tsc",
     "clear": "rm -rf dist",
-    "start": "npm run build && node dist/index.js",
-    "start:container": "docker compose up --build -d",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:local": "npm run build && node dist/index.js",
+    "start:local:container": "docker compose up --build -d",
+    "stop:local:container": "docker compose down",
+    "test:local": "echo \"Error: no test specified\" && exit 1",
+    "test:local:e2e": "npm run stop:local:container && npm run start:local:container && mkdir -p artifacts && cd ./collection/library_api && sleep 5 && npx bru run --env local --reporter-html results.html && cd ../../ && mv ./collection/library_api/results.html ./artifacts/results.html && npm run stop:local:container",
+    "test:local:acceptance": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint src/**/*.ts",
     "lint:fix": "npx eslint src/**/*.ts --fix"
   },
@@ -30,6 +33,7 @@
     "@": "./dist"
   },
   "dependencies": {
+    "@usebruno/cli": "^2.13.2",
     "express": "^5.1.0",
     "postgres": "^3.4.7"
   }

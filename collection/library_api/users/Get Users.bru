@@ -7,10 +7,15 @@ meta {
 get {
   url: {{host}}/users
   body: none
-  auth: none
+  auth: basic
 }
 
 auth:basic {
   username: {{username}}
   password: {{password}}
+}
+
+assert {
+  res.body.length: gt 0
+  res.status: eq 200
 }

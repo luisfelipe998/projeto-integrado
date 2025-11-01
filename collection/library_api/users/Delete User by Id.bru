@@ -5,12 +5,17 @@ meta {
 }
 
 delete {
-  url: {{host}}/users/3
+  url: {{host}}/users/{{createdUserId}}
   body: none
-  auth: none
+  auth: basic
 }
 
 auth:basic {
   username: {{username}}
   password: {{password}}
+}
+
+assert {
+  res.body: isEmpty
+  res.status: eq 204
 }

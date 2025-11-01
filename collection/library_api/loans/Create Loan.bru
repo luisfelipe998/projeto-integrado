@@ -7,7 +7,12 @@ meta {
 post {
   url: {{host}}/loans
   body: json
-  auth: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
 }
 
 body:json {
@@ -19,7 +24,10 @@ body:json {
   }
 }
 
-auth:basic {
-  username: {{username}}
-  password: {{password}}
+vars:post-response {
+  createdLoanId: res.body.id
+}
+
+assert {
+  res.status: eq 201
 }

@@ -7,7 +7,7 @@ meta {
 get {
   url: {{host}}/loans
   body: none
-  auth: none
+  auth: basic
 }
 
 params:query {
@@ -20,4 +20,9 @@ params:query {
 auth:basic {
   username: {{username}}
   password: {{password}}
+}
+
+assert {
+  res.body.length: gt 0
+  res.status: eq 200
 }

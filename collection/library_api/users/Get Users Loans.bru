@@ -1,0 +1,21 @@
+meta {
+  name: Get Users Loans
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{host}}/users/3/loans
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+assert {
+  res.status: eq 200
+  res.body.length: gt 0
+}
