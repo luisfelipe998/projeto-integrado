@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1762029537885" clover="3.2.0">
-  <project timestamp="1762029537885" name="All files">
-    <metrics statements="204" coveredstatements="140" conditionals="86" coveredconditionals="36" methods="56" coveredmethods="32" elements="346" coveredelements="208" complexity="0" loc="204" ncloc="204" packages="5" files="8" classes="8"/>
+<coverage generated="1762034218147" clover="3.2.0">
+  <project timestamp="1762034218147" name="All files">
+    <metrics statements="143" coveredstatements="140" conditionals="38" coveredconditionals="36" methods="32" coveredmethods="32" elements="213" coveredelements="208" complexity="0" loc="143" ncloc="143" packages="4" files="4" classes="4"/>
     <package name="application.book">
       <metrics statements="50" coveredstatements="50" conditionals="14" coveredconditionals="14" methods="11" coveredmethods="11"/>
       <file name="bookController.ts" path="/Users/i521862/Documents/personal/unisinos/2025_02/projeto-integrado/src/application/book/bookController.ts">
@@ -144,82 +144,6 @@
         <line num="63" count="1" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="infra.postgres">
-      <metrics statements="61" coveredstatements="0" conditionals="48" coveredconditionals="0" methods="24" coveredmethods="0"/>
-      <file name="bookRepository.ts" path="/Users/i521862/Documents/personal/unisinos/2025_02/projeto-integrado/src/infra/postgres/bookRepository.ts">
-        <metrics statements="26" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="10" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="87" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="88" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="89" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="90" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="102" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="106" count="0" type="stmt"/>
-        <line num="109" count="0" type="stmt"/>
-      </file>
-      <file name="client.ts" path="/Users/i521862/Documents/personal/unisinos/2025_02/projeto-integrado/src/infra/postgres/client.ts">
-        <metrics statements="4" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-      </file>
-      <file name="loanRepository.ts" path="/Users/i521862/Documents/personal/unisinos/2025_02/projeto-integrado/src/infra/postgres/loanRepository.ts">
-        <metrics statements="16" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-      </file>
-      <file name="userRepository.ts" path="/Users/i521862/Documents/personal/unisinos/2025_02/projeto-integrado/src/infra/postgres/userRepository.ts">
-        <metrics statements="15" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="57" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
       </file>
     </package>
     <package name="middleware">
