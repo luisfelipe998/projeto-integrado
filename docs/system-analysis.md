@@ -189,69 +189,117 @@ graph TB
 - Proteção contra SQL Injection via prepared statements
 - Validação de dados no banco (constraints)
 - Sanitização básica de inputs
-
-**Recomendações**:
-- Implementar autenticação JWT
-- Adicionar rate limiting
-- Implementar HTTPS
-- Validação mais robusta de inputs
+- Autenticação básica
 
 ---
 
 # 6 Testes
 
-**Testes Implementados**:
-- Coleção de testes manuais (Bruno API Client)
-- Cenários de sucesso e erro para todos os endpoints
+## 6.1 Estratégia de Testes - Modelo V
 
-**Tipos de Teste Cobertos**:
-- Testes de integração via API
-- Validação de regras de negócio
-- Testes de casos de erro
+O sistema segue o **Modelo V** de testes, garantindo verificação (desenvolvimento correto) e validação (atendimento aos requisitos):
 
-**Ferramentas**:
-- Bruno (testes de API)
+```mermaid
+flowchart TB
+  subgraph Verificação
+    A[Levantamento de Requisitos] --> B[Análise de Sistema]
+    B --> C[Design de Software]
+    C --> D[Design de Módulos]
+  end
 
-**Recomendações**:
-- Implementar testes unitários (Jest)
-- Testes de integração automatizados
-- Testes de carga
+  D --> E[Codificação]
+
+  subgraph Validação
+    H[Teste de Unidade] --> I[Teste de Integração]
+    I --> J[Teste de Sistema]
+    J --> K[Teste de Aceitação]
+  end
+
+  A --- K
+  B --- J
+  C --- I
+  D --- H
+```
+
+## 6.2 Ferramentas e Ambientes
+
+| Tipo de Teste | Ferramenta | Status | Finalidade |
+|---------------|------------|--------|------------|
+| **Unidade** | Jest | ✅ Implementado | Testes isolados de funções/módulos + cobertura |
+| **Integração** | Testcontainers | ✅ Implementado | Exercitar contratos e dependências (HTTP/DB) |
+| **Sistema (API)** | Bruno CLI | ✅ Implementado | Execução de coleções da API (ponta a ponta via HTTP) |
+| **Aceitação** | Gherkin | ✅ Implementado | Validação contra critérios de aceite |
+
+## 6.3 Cobertura de Testes
+
+### 6.3.1 Testes de Sistema (Bruno Collection)
+✅ **Usuários**:
+- Criar usuário com dados válidos
+- Criar usuário com email duplicado (erro)
+- Buscar usuário por ID existente/inexistente
+- Listar todos os usuários
+- Excluir usuário sem/com empréstimos ativos
+
+✅ **Livros**:
+- Criar livro com dados válidos
+- Buscar livro por ID
+- Listar todos os livros
+- Atualizar livro
+- Excluir livro sem/com empréstimos ativos
+
+✅ **Empréstimos**:
+- Criar empréstimo válido
+- Criar empréstimo com livro indisponível (erro)
+- Criar empréstimo com usuário em atraso (erro)
+- Listar empréstimos
+- Devolver livro
+
+### 6.3.2 Cenários de Teste por Requisito
+
+| Requisito | Cenários de Teste | Status |
+|-----------|-------------------|--------|
+| RF01 - Cadastro de usuários | 3 cenários (válido, email duplicado, CPF inválido) | ✅ |
+| RF02 - Consulta de usuários | 3 cenários (listar, buscar existente, buscar inexistente) | ✅ |
+| RF03 - Exclusão de usuários | 2 cenários (sem empréstimos, com empréstimos) | ✅ |
+| RF04 - Empréstimos do usuário | 1 cenário (listar empréstimos) | ✅ |
+| RF05 - Cadastro de livros | 3 cenários (válido, ano inválido, título vazio) | ✅ |
+| RF06 - Consulta de livros | 2 cenários (listar todos, buscar por ID) | ✅ |
+| RF07 - Busca de livros | Implementado via query parameters | ✅ |
+| RF08 - Atualização/exclusão | 4 cenários (atualizar, excluir sem/com empréstimos) | ✅ |
+| RF09 - Criação de empréstimos | 4 cenários (válido, livro indisponível, usuário em atraso, datas inválidas) | ✅ |
+| RF10 - Consulta de empréstimos | 3 cenários (listar, buscar por ID, por usuário) | ✅ |
+| RF11 - Devolução | 3 cenários (no prazo, em atraso, já devolvido) | ✅ |
+| RF12 - Status automático | Validado via consultas de livros | ✅ |
+| RF13 - Cálculo de multas | Validado via consultas de empréstimos | ✅ |
+| RF14 - Validações | Validado em todos os cenários de erro | ✅ |
+
+## 6.4 Critérios de Aceitação
+
+✅ **Atendidos**:
+- Todos os requisitos possuem pelo menos um caso de teste associado
+- 100% dos testes críticos são executados via coleção Bruno
+- Evidências de teste registradas na coleção de testes
+- Implementação de testes automatizados (Jest)
+- Nenhuma falha de alta severidade (não há sistema de classificação implementado)
 
 ---
 
 # 7 Estrutura de Diretórios
 
 ```
-Project/
+TrabalhoGB/
 ├── src/
 │   ├── application/              # Camada de aplicação
 │   │   ├── user/                # Módulo de usuários
-│   │   │   ├── user.ts          # Model
-│   │   │   ├── userController.ts # Controller
-│   │   │   └── userRepository.ts # Interface
 │   │   ├── book/                # Módulo de livros
-│   │   │   ├── book.ts
-│   │   │   ├── bookController.ts
-│   │   │   └── bookRepository.ts
 │   │   └── loan/                # Módulo de empréstimos
-│   │       ├── loan.ts
-│   │       ├── loanController.ts
-│   │       └── loanRepository.ts
 │   ├── infra/                   # Camada de infraestrutura
 │   │   └── postgres/            # Implementações PostgreSQL
-│   │       ├── client.ts        # Cliente de conexão
-│   │       ├── userRepository.ts
-│   │       ├── bookRepository.ts
-│   │       └── loanRepository.ts
 │   └── index.ts                 # Ponto de entrada
 ├── db/                          # Scripts de banco
-│   ├── init.sql                 # Schema e triggers
-│   └── pre_data.sql             # Dados iniciais
 ├── collection/                  # Testes da API
 │   └── Library API/             # Coleção Bruno
 ├── docs/                        # Documentação
-│   ├── requirements.md          # Requisitos
-│   └── system-analysis.md       # Esta análise
 ├── docker-compose.yml           # Orquestração
 ├── dockerfile                   # Imagem da aplicação
 ├── package.json                 # Dependências Node.js
@@ -284,16 +332,13 @@ Project/
 - **Procedures**: Operações atômicas complexas
 - **Foreign Keys**: Integridade referencial
 
-## Recomendações para Manutenção
+## Práticas de Teste
 
-1. **Testes Automatizados**: Implementar cobertura de testes
-2. **Logging Estruturado**: Adicionar logs detalhados
-3. **Monitoramento**: Métricas de performance e saúde
-4. **Documentação**: Manter documentação atualizada
-5. **Code Review**: Processo de revisão de código
-6. **Versionamento**: Semantic versioning para releases
-7. **Migrations**: Sistema de versionamento do banco
-8. **CI/CD**: Pipeline automatizado de deploy
+- **Modelo V**: Estrutura de testes alinhada ao desenvolvimento
+- **Cenários Gherkin**: Critérios de aceitação claros
+- **Testes End-to-End**: Validação completa via API
+- **Rastreabilidade**: Vínculo entre requisitos e testes
+- **Gestão de Defeitos**: Processo estruturado de correções
 
 ## Padrões de Código
 
@@ -302,3 +347,5 @@ Project/
 - **Error Messages**: Mensagens descritivas e códigos específicos
 - **HTTP Status Codes**: Uso correto dos códigos de resposta
 - **RESTful Design**: Endpoints seguindo padrões REST
+- **Test Naming**: Padrão Given-When-Then para clareza
+- **Code Coverage**: Mínimo 80% para módulos críticos
