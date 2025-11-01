@@ -1,0 +1,23 @@
+meta {
+  name: Get Books By ISBN
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{host}}/books?isbn=978-0132350884
+  body: none
+  auth: none
+}
+
+params:query {
+  isbn: 978-0132350884
+  ~status: available
+  ~status: rented
+  ~status: late
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}

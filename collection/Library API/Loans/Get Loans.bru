@@ -1,0 +1,23 @@
+meta {
+  name: Get Loans
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/loans
+  body: none
+  auth: none
+}
+
+params:query {
+  ~bookid: 4
+  ~status: active
+  ~status: late
+  ~status: returned
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}

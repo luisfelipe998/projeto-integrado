@@ -1,0 +1,16 @@
+meta {
+  name: Delete Book By ID
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{host}}/books/2
+  body: none
+  auth: none
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}

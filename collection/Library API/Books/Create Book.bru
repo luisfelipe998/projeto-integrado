@@ -1,0 +1,25 @@
+meta {
+  name: Create Book
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{host}}/books
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "year": 2008,
+    "isbn": "978-0132350884"
+  }
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}

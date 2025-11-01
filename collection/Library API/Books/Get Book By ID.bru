@@ -1,0 +1,16 @@
+meta {
+  name: Get Book By ID
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{host}}/books/7
+  body: none
+  auth: none
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}

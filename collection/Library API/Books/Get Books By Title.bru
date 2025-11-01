@@ -1,0 +1,23 @@
+meta {
+  name: Get Books By Title
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{host}}/books?title=Clean Code
+  body: none
+  auth: basic
+}
+
+params:query {
+  title: Clean Code
+  ~status: available
+  ~status: rented
+  ~status: late
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
