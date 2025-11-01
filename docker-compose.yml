@@ -25,6 +25,8 @@ services:
       DATABASE_USER: admin
       DATABASE_PASSWORD: admin
       DATABASE_NAME: library
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: admin
     depends_on:
       - database
 

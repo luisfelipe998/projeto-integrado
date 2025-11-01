@@ -1,0 +1,20 @@
+meta {
+  name: Delete Book By ID (non existent)
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{host}}/books/1000
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+assert {
+  res.status: eq 404
+}
