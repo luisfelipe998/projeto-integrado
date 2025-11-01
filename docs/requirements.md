@@ -77,11 +77,3 @@ Veja [aqui](../tests/acceptance/)
   "fine": 0
 }
 ```
-
-## Códigos de Erro Personalizados
-
-- `B0001` - Não é possível excluir livro com empréstimos ativos
-- `U0001` - Não é possível excluir usuário com empréstimos ativos  
-- `L0001` - Não é possível criar empréstimo: Livro não está disponível
-- `L0002` - Não é possível criar empréstimo: Usuário possui empréstimos em atraso
-- `L0003` - Empréstimo não encontrado ou já devolvido
