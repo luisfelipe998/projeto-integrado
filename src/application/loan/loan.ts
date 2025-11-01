@@ -1,4 +1,4 @@
-import { Book } from "../book/book";
+import { Book } from '../book/book';
 
 export type LoanStatus = 'active' | 'late' | 'returned';
 

@@ -1,4 +1,4 @@
-import { Loan, LoanStatus, LoanToCreate } from "./loan";
+import { Loan, LoanStatus, LoanToCreate } from './loan';
 
 export interface LoanRepository {
     getAllLoans(bookId: number, status: LoanStatus): Promise<Loan[]>;

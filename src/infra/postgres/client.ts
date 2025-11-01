@@ -9,6 +9,6 @@ export const sql = postgres({
   ssl: false
 });
 
-export async function connect() {
+export async function connect(): Promise<void> {
   await sql`SELECT 1`;
 }
