@@ -30,20 +30,20 @@ O sistema é direcionado para bibliotecas que necessitam de uma solução digita
 
 | ID | Requisito | Status | Referência |
 |----|-----------|--------|------------|
-| RF01 | Cadastrar usuários com validação de email e CPF únicos | ✅ | [requirements.md - Cadastro de Usuários](requirements.md#1-gerenciamento-de-usuários) |
-| RF02 | Listar e consultar usuários por ID | ✅ | [requirements.md - Consulta de Usuários](requirements.md#feature-consulta-de-usuários) |
-| RF03 | Excluir usuários (apenas sem empréstimos ativos) | ✅ | [requirements.md - Exclusão de Usuários](requirements.md#feature-exclusão-de-usuários) |
-| RF04 | Listar empréstimos de um usuário específico | ✅ | [requirements.md - Consulta de Empréstimos](requirements.md#feature-consulta-de-empréstimos) |
-| RF05 | Cadastrar livros com validação de dados | ✅ | [requirements.md - Cadastro de Livros](requirements.md#2-gerenciamento-de-livros) |
-| RF06 | Listar livros com status automático | ✅ | [requirements.md - Consulta de Livros](requirements.md#feature-consulta-de-livros) |
-| RF07 | Buscar livros por título ou ISBN | ✅ | [requirements.md - Consulta de Livros](requirements.md#feature-consulta-de-livros) |
-| RF08 | Atualizar e excluir livros | ✅ | [requirements.md - Atualização/Exclusão](requirements.md#feature-atualização-de-livros) |
-| RF09 | Criar empréstimos com validações | ✅ | [requirements.md - Criação de Empréstimos](requirements.md#3-gerenciamento-de-empréstimos) |
-| RF10 | Listar empréstimos com detalhes completos | ✅ | [requirements.md - Consulta de Empréstimos](requirements.md#feature-consulta-de-empréstimos) |
-| RF11 | Devolver livros com cálculo de multa | ✅ | [requirements.md - Devolução de Livros](requirements.md#feature-devolução-de-livros) |
-| RF12 | Calcular status automático dos livros | ✅ | [requirements.md - Controle de Status](requirements.md#4-regras-de-negócio) |
-| RF13 | Calcular multas por atraso (R$ 1,00/dia) | ✅ | [requirements.md - Cálculo de Multas](requirements.md#feature-cálculo-de-multas) |
-| RF14 | Validar integridade de dados | ✅ | [requirements.md - Validações](requirements.md#feature-validações-de-integridade) |
+| RF01 | Cadastrar usuários com validação de email e CPF únicos | ✅ | [acceptance.md - Cadastro de Usuários](../tests/acceptance/acceptance.md#1-gerenciamento-de-usuários) |
+| RF02 | Listar e consultar usuários por ID | ✅ | [acceptance.md - Consulta de Usuários](../tests/acceptance/acceptance.md#feature-consulta-de-usuários) |
+| RF03 | Excluir usuários (apenas sem empréstimos ativos) | ✅ | [acceptance.md - Exclusão de Usuários](../tests/acceptance/acceptance.md#feature-exclusão-de-usuários) |
+| RF04 | Listar empréstimos de um usuário específico | ✅ | [acceptance.md - Consulta de Empréstimos](../tests/acceptance/acceptance.md#feature-consulta-de-empréstimos) |
+| RF05 | Cadastrar livros com validação de dados | ✅ | [acceptance.md - Cadastro de Livros](../tests/acceptance/acceptance.md#2-gerenciamento-de-livros) |
+| RF06 | Listar livros com status automático | ✅ | [acceptance.md - Consulta de Livros](../tests/acceptance/acceptance.md#feature-consulta-de-livros) |
+| RF07 | Buscar livros por título ou ISBN | ✅ | [acceptance.md - Consulta de Livros](../tests/acceptance/acceptance.md#feature-consulta-de-livros) |
+| RF08 | Atualizar e excluir livros | ✅ | [acceptance.md - Atualização/Exclusão](../tests/acceptance/acceptance.md#feature-atualização-de-livros) |
+| RF09 | Criar empréstimos com validações | ✅ | [acceptance.md - Criação de Empréstimos](../tests/acceptance/acceptance.md#3-gerenciamento-de-empréstimos) |
+| RF10 | Listar empréstimos com detalhes completos | ✅ | [acceptance.md - Consulta de Empréstimos](../tests/acceptance/acceptance.md#feature-consulta-de-empréstimos) |
+| RF11 | Devolver livros com cálculo de multa | ✅ | [acceptance.md - Devolução de Livros](../tests/acceptance/acceptance.md#feature-devolução-de-livros) |
+| RF12 | Calcular status automático dos livros | ✅ | [acceptance.md - Controle de Status](../tests/acceptance/acceptance.md#4-regras-de-negócio) |
+| RF13 | Calcular multas por atraso (R$ 1,00/dia) | ✅ | [acceptance.md - Cálculo de Multas](../tests/acceptance/acceptance.md#feature-cálculo-de-multas) |
+| RF14 | Validar integridade de dados | ✅ | [acceptance.md - Validações](../tests/acceptance/acceptance.md#feature-validações-de-integridade) |
 
 ## 1.4 Requisitos Não Funcionais
 
@@ -230,50 +230,8 @@ flowchart TB
 | **Sistema (API)** | Bruno CLI | ✅ Implementado | Execução de coleções da API (ponta a ponta via HTTP) |
 | **Aceitação** | Gherkin | ✅ Implementado | Validação contra critérios de aceite |
 
-## 6.3 Cobertura de Testes
 
-### 6.3.1 Testes de Sistema (Bruno Collection)
-✅ **Usuários**:
-- Criar usuário com dados válidos
-- Criar usuário com email duplicado (erro)
-- Buscar usuário por ID existente/inexistente
-- Listar todos os usuários
-- Excluir usuário sem/com empréstimos ativos
-
-✅ **Livros**:
-- Criar livro com dados válidos
-- Buscar livro por ID
-- Listar todos os livros
-- Atualizar livro
-- Excluir livro sem/com empréstimos ativos
-
-✅ **Empréstimos**:
-- Criar empréstimo válido
-- Criar empréstimo com livro indisponível (erro)
-- Criar empréstimo com usuário em atraso (erro)
-- Listar empréstimos
-- Devolver livro
-
-### 6.3.2 Cenários de Teste por Requisito
-
-| Requisito | Cenários de Teste | Status |
-|-----------|-------------------|--------|
-| RF01 - Cadastro de usuários | 3 cenários (válido, email duplicado, CPF inválido) | ✅ |
-| RF02 - Consulta de usuários | 3 cenários (listar, buscar existente, buscar inexistente) | ✅ |
-| RF03 - Exclusão de usuários | 2 cenários (sem empréstimos, com empréstimos) | ✅ |
-| RF04 - Empréstimos do usuário | 1 cenário (listar empréstimos) | ✅ |
-| RF05 - Cadastro de livros | 3 cenários (válido, ano inválido, título vazio) | ✅ |
-| RF06 - Consulta de livros | 2 cenários (listar todos, buscar por ID) | ✅ |
-| RF07 - Busca de livros | Implementado via query parameters | ✅ |
-| RF08 - Atualização/exclusão | 4 cenários (atualizar, excluir sem/com empréstimos) | ✅ |
-| RF09 - Criação de empréstimos | 4 cenários (válido, livro indisponível, usuário em atraso, datas inválidas) | ✅ |
-| RF10 - Consulta de empréstimos | 3 cenários (listar, buscar por ID, por usuário) | ✅ |
-| RF11 - Devolução | 3 cenários (no prazo, em atraso, já devolvido) | ✅ |
-| RF12 - Status automático | Validado via consultas de livros | ✅ |
-| RF13 - Cálculo de multas | Validado via consultas de empréstimos | ✅ |
-| RF14 - Validações | Validado em todos os cenários de erro | ✅ |
-
-## 6.4 Critérios de Aceitação
+## 6.3 Critérios de Aceitação
 
 ✅ **Atendidos**:
 - Todos os requisitos possuem pelo menos um caso de teste associado
