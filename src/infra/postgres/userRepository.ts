@@ -29,55 +29,55 @@ export interface LoanWithBookDB {
 }
 
 function mapUserDBToUser(userDB: UserDB): User {
-    return {
-        id: userDB.id,
-        name: userDB.name,
-        email: userDB.email,
-        cpf: userDB.cpf,
-        address: userDB.address
-    };
+  return {
+    id: userDB.id,
+    name: userDB.name,
+    email: userDB.email,
+    cpf: userDB.cpf,
+    address: userDB.address
+  };
 }
 
 function mapUsersDBToUsers(usersDB: UserDB[]): User[] {
-    return usersDB.map(mapUserDBToUser);
+  return usersDB.map(mapUserDBToUser);
 }
 
 export class PostgresUserRepository implements UserRepository {
-    async getAllUsers(): Promise<User[]> {
-        const result = await sql<UserDB[]>`
+  async getAllUsers(): Promise<User[]> {
+    const result = await sql<UserDB[]>`
             SELECT * FROM users
         `;
-        return mapUsersDBToUsers(result);
-    }
+    return mapUsersDBToUsers(result);
+  }
 
-    async getUserById(id: number): Promise<User | null> {
-        const result = await sql<UserDB[]>`
+  async getUserById(id: number): Promise<User | null> {
+    const result = await sql<UserDB[]>`
             SELECT * FROM users WHERE id = ${id}
         `;
-        return result[0] ? mapUserDBToUser(result[0]) : null;
-    }
+    return result[0] ? mapUserDBToUser(result[0]) : null;
+  }
 
-    async createUser(user: Omit<User, 'id'>): Promise<number> {
-        const result = await sql<UserDB[]>`
+  async createUser(user: Omit<User, 'id'>): Promise<number> {
+    const result = await sql<UserDB[]>`
             INSERT INTO users (name, email, cpf, address)
             VALUES (${user.name}, ${user.email}, ${user.cpf}, ${user.address})
             RETURNING id
         `;
-        return result[0].id;
-    }
+    return result[0].id;
+  }
 
-    async deleteUser(id: number): Promise<boolean> {
-        const result = await sql`
+  async deleteUser(id: number): Promise<boolean> {
+    const result = await sql`
             DELETE FROM users WHERE id = ${id}
         `;
-        return result.count > 0;
-    }
+    return result.count > 0;
+  }
 
-    async getUserLoans(userId: number): Promise<Loan[]> {
-        const result = await sql<LoanDB[]>`
+  async getUserLoans(userId: number): Promise<Loan[]> {
+    const result = await sql<LoanDB[]>`
             SELECT * from loan_detailed_view WHERE user_id = ${userId}
         `;
-        return mapLoansDBToLoans(result);
-    }
+    return mapLoansDBToLoans(result);
+  }
     
 }

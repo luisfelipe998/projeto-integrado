@@ -1,5 +1,5 @@
-import { Loan } from "../loan/loan";
-import { User } from "./user";
+import { Loan } from '../loan/loan';
+import { User } from './user';
 
 export interface UserRepository {
     getAllUsers(): Promise<User[]>;

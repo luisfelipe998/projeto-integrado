@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { UserController } from "./application/user/userController";
+import { UserController } from './application/user/userController';
 import { BookController } from './application/book/bookController';
 import { LoanController } from './application/loan/loanController';
 import { PostgresUserRepository } from './infra/postgres/userRepository';
@@ -24,7 +24,7 @@ const loanController = new LoanController(loanRepository);
 app.use(express.json());
 
 app.get('/healthz', (_, res) => {
-    res.status(200).json({ message: 'Server is healthy' });
+  res.status(200).json({ message: 'Server is healthy' });
 });
 
 app.get('/users', basicAuthMiddleware, userController.getAllUsers);
@@ -46,29 +46,30 @@ app.put('/loans/:id/return', basicAuthMiddleware, loanController.returnLoan);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => errorHandler(err, req, res, next));
 
-function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
-    console.error('Error:', err);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function errorHandler(err: any, req: Request, res: Response, next: NextFunction): void {
+  console.error('Error:', err);
   
-    const message = err.message || 'Internal Server Error';
-    res.status(500).json({
-      error: {
-        message,
-        code: err.code || 'INTERNAL_SERVER_ERROR',
-      },
-    });
-  }
+  const message = err.message || 'Internal Server Error';
+  res.status(500).json({
+    error: {
+      message,
+      code: err.code || 'INTERNAL_SERVER_ERROR',
+    },
+  });
+}
 
 const connectWithRetry = async (delay = 2000): Promise<void> => {
-    try {
-        await connect();
-        console.log('Database connection successful');
-        app.listen(PORT, () => {
-            console.log(`Server is running on http://localhost:${PORT}`);
-        });
-    } catch (error) {
-        console.error(`Database connection failed. Retrying in ${delay / 1000} seconds...`);
-        setTimeout(() => connectWithRetry(delay), delay);
-    }
+  try {
+    await connect();
+    console.log('Database connection successful');
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error(`Database connection failed. Retrying in ${delay / 1000} seconds...`, error);
+    setTimeout(() => connectWithRetry(delay), delay);
+  }
 };
 
 connectWithRetry();
