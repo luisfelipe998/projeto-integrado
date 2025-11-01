@@ -8,7 +8,7 @@
     "start:local": "npm run build && node dist/index.js",
     "start:local:container": "docker compose up --build -d",
     "stop:local:container": "docker compose down",
-    "test:local": "echo \"Error: no test specified\" && exit 1",
+    "test:local": "jest --coverage",
     "test:local:e2e": "npm run stop:local:container && npm run start:local:container && mkdir -p artifacts && cd ./collection/library_api && sleep 5 && npx bru run --env local --reporter-html results.html && cd ../../ && mv ./collection/library_api/results.html ./artifacts/results.html && npm run stop:local:container",
     "test:local:acceptance": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint src/**/*.ts",
@@ -20,13 +20,16 @@
   "description": "",
   "devDependencies": {
     "@types/express": "^5.0.2",
+    "@types/jest": "^30.0.0",
     "@types/module-alias": "^2.0.4",
     "@types/node": "^22.7.2",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^9.39.0",
+    "jest": "^30.2.0",
     "module-alias": "^2.2.3",
+    "ts-jest": "^29.4.5",
     "typescript": "^5.6.2"
   },
   "_moduleAliases": {
