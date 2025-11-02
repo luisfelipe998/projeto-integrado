@@ -13,6 +13,8 @@ O sistema implementa uma API REST para gerenciar uma biblioteca, incluindo:
 
 ## Tabela de Controle de Testes de Aceitação
 
+A descrição detalhada de cada teste de aceitação se encontra em [acceptance.md](./acceptance.md).
+
 | ID | Funcionalidade | Cenário de Teste | Status | Data Execução | Executado Por | Observações | Aceito (S/N) |
 |----|----------------|------------------|--------|---------------|---------------|-------------|--------------|
 | **USUÁRIOS** |
@@ -75,8 +77,8 @@ Para que uma funcionalidade seja considerada aceita, todos os cenários de teste
 
 1. Executar sem erros técnicos
 2. Retornar os códigos de status HTTP corretos
-4. Manter a integridade dos dados no banco
-5. Seguir as regras de negócio definidas
+3. Manter a integridade dos dados no banco
+4. Seguir as regras de negócio definidas
 
 ## Ambiente de Teste
 

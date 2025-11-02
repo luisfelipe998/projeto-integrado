@@ -2,7 +2,7 @@
 
 **Feature: Cadastro de Usuários**
 ```gherkin
-Scenario: Cadastrar um novo usuário com dados válidos
+Scenario: U01 - Cadastrar um novo usuário com dados válidos
   Given que eu sou um administrador da biblioteca
   When eu envio uma requisição POST para "/users" com os dados:
     | name    | João Silva                    |
@@ -13,13 +13,13 @@ Scenario: Cadastrar um novo usuário com dados válidos
   And o usuário deve ser criado com um ID único
   And os dados do usuário devem ser armazenados no banco de dados
 
-Scenario: Tentar cadastrar usuário com email duplicado
+Scenario: U02 - Tentar cadastrar usuário com email duplicado
   Given que já existe um usuário com email "joao.silva@example.com"
   When eu envio uma requisição POST para "/users" com email "joao.silva@example.com"
   Then o sistema deve retornar status 400
   And deve exibir mensagem de erro informando que o email já está em uso
 
-Scenario: Tentar cadastrar usuário com CPF inválido
+Scenario: U03 - Tentar cadastrar usuário com CPF inválido
   Given que eu sou um administrador da biblioteca
   When eu envio uma requisição POST para "/users" com CPF "123.456.789-99"
   Then o sistema deve retornar status 400
@@ -28,19 +28,19 @@ Scenario: Tentar cadastrar usuário com CPF inválido
 
 **Feature: Consulta de Usuários**
 ```gherkin
-Scenario: Listar todos os usuários
+Scenario: U04 - Listar todos os usuários
   Given que existem usuários cadastrados no sistema
   When eu envio uma requisição GET para "/users"
   Then o sistema deve retornar status 200
   And deve retornar uma lista com todos os usuários cadastrados
 
-Scenario: Buscar usuário por ID existente
+Scenario: U05 - Buscar usuário por ID existente
   Given que existe um usuário com ID 1
   When eu envio uma requisição GET para "/users/1"
   Then o sistema deve retornar status 200
   And deve retornar os dados completos do usuário
 
-Scenario: Buscar usuário por ID inexistente
+Scenario: U06 - Buscar usuário por ID inexistente
   Given que não existe usuário com ID 999
   When eu envio uma requisição GET para "/users/999"
   Then o sistema deve retornar status 404
@@ -49,14 +49,14 @@ Scenario: Buscar usuário por ID inexistente
 
 **Feature: Exclusão de Usuários**
 ```gherkin
-Scenario: Excluir usuário sem empréstimos ativos
+Scenario: U07 - Excluir usuário sem empréstimos ativos
   Given que existe um usuário com ID 1
   And o usuário não possui empréstimos ativos
   When eu envio uma requisição DELETE para "/users/1"
   Then o sistema deve retornar status 200
   And o usuário deve ser removido do banco de dados
 
-Scenario: Tentar excluir usuário com empréstimos ativos
+Scenario: U08 - Tentar excluir usuário com empréstimos ativos
   Given que existe um usuário com ID 1
   And o usuário possui empréstimos ativos
   When eu envio uma requisição DELETE para "/users/1"
@@ -68,7 +68,7 @@ Scenario: Tentar excluir usuário com empréstimos ativos
 
 **Feature: Cadastro de Livros**
 ```gherkin
-Scenario: Cadastrar um novo livro com dados válidos
+Scenario: L01 - Cadastrar um novo livro com dados válidos
   Given que eu sou um administrador da biblioteca
   When eu envio uma requisição POST para "/books" com os dados:
     | title  | Clean Code                |
@@ -79,13 +79,13 @@ Scenario: Cadastrar um novo livro com dados válidos
   And o livro deve ser criado com um ID único
   And o status inicial do livro deve ser "available"
 
-Scenario: Tentar cadastrar livro com ano inválido
+Scenario: L02 - Tentar cadastrar livro com ano inválido
   Given que eu sou um administrador da biblioteca
   When eu envio uma requisição POST para "/books" com year menor que 1000
   Then o sistema deve retornar status 400
   And deve exibir mensagem de erro sobre ano inválido
 
-Scenario: Tentar cadastrar livro com título vazio
+Scenario: L03 - Tentar cadastrar livro com título vazio
   Given que eu sou um administrador da biblioteca
   When eu envio uma requisição POST para "/books" com title vazio
   Then o sistema deve retornar status 400
@@ -94,14 +94,14 @@ Scenario: Tentar cadastrar livro com título vazio
 
 **Feature: Consulta de Livros**
 ```gherkin
-Scenario: Listar todos os livros com status
+Scenario: L04 - Listar todos os livros com status
   Given que existem livros cadastrados no sistema
   When eu envio uma requisição GET para "/books"
   Then o sistema deve retornar status 200
   And deve retornar uma lista com todos os livros
   And cada livro deve incluir seu status atual (available, rented, late)
 
-Scenario: Buscar livro por ID
+Scenario: L05 - Buscar livro por ID
   Given que existe um livro com ID 1
   When eu envio uma requisição GET para "/books/1"
   Then o sistema deve retornar status 200
@@ -110,13 +110,13 @@ Scenario: Buscar livro por ID
 
 **Feature: Atualização de Livros**
 ```gherkin
-Scenario: Atualizar dados de um livro
+Scenario: L06 - Atualizar dados de um livro
   Given que existe um livro com ID 1
   When eu envio uma requisição PUT para "/books/1" com novos dados
   Then o sistema deve retornar status 200
   And os dados do livro devem ser atualizados no banco de dados
 
-Scenario: Tentar atualizar livro inexistente
+Scenario: L07 - Tentar atualizar livro inexistente
   Given que não existe livro com ID 999
   When eu envio uma requisição PUT para "/books/999"
   Then o sistema deve retornar status 404
@@ -124,14 +124,14 @@ Scenario: Tentar atualizar livro inexistente
 
 **Feature: Exclusão de Livros**
 ```gherkin
-Scenario: Excluir livro sem empréstimos ativos
+Scenario: L08 - Excluir livro sem empréstimos ativos
   Given que existe um livro com ID 1
   And o livro não possui empréstimos ativos
   When eu envio uma requisição DELETE para "/books/1"
   Then o sistema deve retornar status 200
   And o livro deve ser removido do banco de dados
 
-Scenario: Tentar excluir livro com empréstimos ativos
+Scenario: L09 - Tentar excluir livro com empréstimos ativos
   Given que existe um livro com ID 1
   And o livro possui empréstimos ativos
   When eu envio uma requisição DELETE para "/books/1"
@@ -143,7 +143,7 @@ Scenario: Tentar excluir livro com empréstimos ativos
 
 **Feature: Criação de Empréstimos**
 ```gherkin
-Scenario: Criar empréstimo com dados válidos
+Scenario: E01 - Criar empréstimo com dados válidos
   Given que existe um usuário com ID 1
   And existe um livro disponível com ID 1
   And o usuário não possui empréstimos em atraso
@@ -156,20 +156,20 @@ Scenario: Criar empréstimo com dados válidos
   And o empréstimo deve ser criado com status "active"
   And o status do livro deve mudar para "rented"
 
-Scenario: Tentar criar empréstimo para livro já emprestado
+Scenario: E02 - Tentar criar empréstimo para livro já emprestado
   Given que existe um livro com ID 1 já emprestado
   When eu envio uma requisição POST para "/loans" com bookId 1
   Then o sistema deve retornar status 400
   And deve exibir mensagem informando que o livro não está disponível
 
-Scenario: Tentar criar empréstimo para usuário com empréstimos em atraso
+Scenario: E03 - Tentar criar empréstimo para usuário com empréstimos em atraso
   Given que existe um usuário com ID 1
   And o usuário possui empréstimos em atraso
   When eu envio uma requisição POST para "/loans" com userId 1
   Then o sistema deve retornar status 400
   And deve exibir mensagem informando que o usuário possui empréstimos em atraso
 
-Scenario: Tentar criar empréstimo com data de fim anterior à data de início
+Scenario: E04 - Tentar criar empréstimo com data de fim anterior à data de início
   Given que existe um usuário com ID 1
   And existe um livro disponível com ID 1
   When eu envio uma requisição POST para "/loans" com endDate anterior ao startDate
@@ -179,20 +179,20 @@ Scenario: Tentar criar empréstimo com data de fim anterior à data de início
 
 **Feature: Consulta de Empréstimos**
 ```gherkin
-Scenario: Listar todos os empréstimos
+Scenario: E05 - Listar todos os empréstimos
   Given que existem empréstimos no sistema
   When eu envio uma requisição GET para "/loans"
   Then o sistema deve retornar status 200
   And deve retornar uma lista com todos os empréstimos
   And cada empréstimo deve incluir dados do livro, status, dias de atraso e multa
 
-Scenario: Buscar empréstimo por ID
+Scenario: E06 - Buscar empréstimo por ID
   Given que existe um empréstimo com ID 1
   When eu envio uma requisição GET para "/loans/1"
   Then o sistema deve retornar status 200
   And deve retornar os dados completos do empréstimo
 
-Scenario: Listar empréstimos de um usuário específico
+Scenario: E07 - Listar empréstimos de um usuário específico
   Given que existe um usuário com ID 1
   And o usuário possui empréstimos
   When eu envio uma requisição GET para "/users/1/loans"
@@ -202,7 +202,7 @@ Scenario: Listar empréstimos de um usuário específico
 
 **Feature: Devolução de Livros**
 ```gherkin
-Scenario: Devolver livro dentro do prazo
+Scenario: E08 - Devolver livro dentro do prazo
   Given que existe um empréstimo ativo com ID 1
   And a data atual está dentro do prazo de devolução
   When eu envio uma requisição PUT para "/loans/1/return"
@@ -212,7 +212,7 @@ Scenario: Devolver livro dentro do prazo
   And o status do livro deve mudar para "available"
   And a multa deve ser 0
 
-Scenario: Devolver livro em atraso
+Scenario: E09 - Devolver livro em atraso
   Given que existe um empréstimo ativo com ID 1
   And a data atual está após o prazo de devolução
   When eu envio uma requisição PUT para "/loans/1/return"
@@ -222,13 +222,13 @@ Scenario: Devolver livro em atraso
   And deve ser calculada multa baseada nos dias de atraso
   And o status do livro deve mudar para "available"
 
-Scenario: Tentar devolver empréstimo já devolvido
+Scenario: E10 - Tentar devolver empréstimo já devolvido
   Given que existe um empréstimo com ID 1 já devolvido
   When eu envio uma requisição PUT para "/loans/1/return"
   Then o sistema deve retornar status 400
   And deve exibir mensagem informando que o empréstimo já foi devolvido
 
-Scenario: Tentar devolver empréstimo inexistente
+Scenario: E11 - Tentar devolver empréstimo inexistente
   Given que não existe empréstimo com ID 999
   When eu envio uma requisição PUT para "/loans/999/return"
   Then o sistema deve retornar status 404
@@ -238,7 +238,7 @@ Scenario: Tentar devolver empréstimo inexistente
 
 **Feature: Controle de Status dos Livros**
 ```gherkin
-Scenario: Verificar status automático dos livros
+Scenario: R01 - Verificar status automático dos livros
   Given que existem livros no sistema
   When eu consulto a lista de livros
   Then cada livro deve ter status calculado automaticamente:
@@ -250,7 +250,7 @@ Scenario: Verificar status automático dos livros
 
 **Feature: Cálculo de Multas**
 ```gherkin
-Scenario: Calcular multa para empréstimo em atraso
+Scenario: R02 - Calcular multa para empréstimo em atraso
   Given que existe um empréstimo em atraso há 5 dias
   When eu consulto os dados do empréstimo
   Then a multa deve ser calculada como: dias_atraso * R$ 1,00
@@ -260,19 +260,19 @@ Scenario: Calcular multa para empréstimo em atraso
 
 **Feature: Validações de Integridade**
 ```gherkin
-Scenario: Validar formato de email
+Scenario: R03 - Validar formato de email
   When eu cadastro um usuário com email inválido
   Then o sistema deve rejeitar e exibir erro de formato
 
-Scenario: Validar formato de CPF
+Scenario: R04 - Validar formato de CPF
   When eu cadastro um usuário com CPF que não segue o padrão XXX.XXX.XXX-XX ou XXXXXXXXXXX
   Then o sistema deve rejeitar e exibir erro de formato
 
-Scenario: Validar formato de ISBN
+Scenario: R05 - Validar formato de ISBN
   When eu cadastro um livro com ISBN que não segue o padrão numérico com hífens
   Then o sistema deve rejeitar e exibir erro de formato
 
-Scenario: Validar ano de publicação
+Scenario: R06 - Validar ano de publicação
   When eu cadastro um livro com ano menor que 1000 ou maior que o ano atual
   Then o sistema deve rejeitar e exibir erro de ano inválido
 ```
