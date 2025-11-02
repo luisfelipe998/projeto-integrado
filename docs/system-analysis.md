@@ -182,8 +182,6 @@ graph TB
 
 # 5 Segurança
 
-**Status Atual**: Sistema sem autenticação/autorização implementada.
-
 **Medidas de Segurança Implementadas**:
 - Proteção contra SQL Injection via prepared statements
 - Validação de dados no banco (constraints)
@@ -227,7 +225,7 @@ flowchart TB
 | **Unidade** | Jest | ✅ Implementado | Testes isolados de funções/módulos + cobertura |
 | **Integração** | Testcontainers | ✅ Implementado | Exercitar contratos e dependências (HTTP/DB) |
 | **Sistema (API)** | Bruno CLI | ✅ Implementado | Execução de coleções da API (ponta a ponta via HTTP) |
-| **Aceitação** | Gherkin | ✅ Implementado | Validação contra critérios de aceite |
+| **Aceitação** | Gherkin | ✅ Implementado | Validação (manual) contra critérios de aceite |
 
 
 ## 6.3 Critérios de Aceitação
@@ -294,7 +292,6 @@ TrabalhoGB/
 - **Modelo V**: Estrutura de testes alinhada ao desenvolvimento
 - **Cenários Gherkin**: Critérios de aceitação claros
 - **Testes End-to-End**: Validação completa via API
-- **Rastreabilidade**: Vínculo entre requisitos e testes
 - **Gestão de Defeitos**: Processo estruturado de correções
 
 ## Padrões de Código
@@ -305,4 +302,3 @@ TrabalhoGB/
 - **HTTP Status Codes**: Uso correto dos códigos de resposta
 - **RESTful Design**: Endpoints seguindo padrões REST
 - **Test Naming**: Padrão Given-When-Then para clareza
-- **Code Coverage**: Mínimo 80% para módulos críticos
