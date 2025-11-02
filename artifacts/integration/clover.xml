@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1762034263453" clover="3.2.0">
-  <project timestamp="1762034263453" name="All files">
+<coverage generated="1762093932529" clover="3.2.0">
+  <project timestamp="1762093932529" name="All files">
     <metrics statements="61" coveredstatements="60" conditionals="48" coveredconditionals="41" methods="24" coveredmethods="23" elements="133" coveredelements="124" complexity="0" loc="61" ncloc="61" packages="1" files="4" classes="4"/>
     <file name="bookRepository.ts" path="/Users/i521862/Documents/personal/unisinos/2025_02/projeto-integrado/src/infra/postgres/bookRepository.ts">
       <metrics statements="26" coveredstatements="26" conditionals="28" coveredconditionals="21" methods="10" coveredmethods="10"/>
