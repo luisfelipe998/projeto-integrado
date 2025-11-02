@@ -27,22 +27,7 @@ O sistema é direcionado para bibliotecas que necessitam de uma solução digita
 
 ## 1.3 Requisitos Funcionais
 
-| ID | Requisito | Status | Referência |
-|----|-----------|--------|------------|
-| RF01 | Cadastrar usuários com validação de email e CPF únicos | ✅ | [acceptance.md - Cadastro de Usuários](../tests/acceptance/acceptance.md#1-gerenciamento-de-usuários) |
-| RF02 | Listar e consultar usuários por ID | ✅ | [acceptance.md - Consulta de Usuários](../tests/acceptance/acceptance.md#feature-consulta-de-usuários) |
-| RF03 | Excluir usuários (apenas sem empréstimos ativos) | ✅ | [acceptance.md - Exclusão de Usuários](../tests/acceptance/acceptance.md#feature-exclusão-de-usuários) |
-| RF04 | Listar empréstimos de um usuário específico | ✅ | [acceptance.md - Consulta de Empréstimos](../tests/acceptance/acceptance.md#feature-consulta-de-empréstimos) |
-| RF05 | Cadastrar livros com validação de dados | ✅ | [acceptance.md - Cadastro de Livros](../tests/acceptance/acceptance.md#2-gerenciamento-de-livros) |
-| RF06 | Listar livros com status automático | ✅ | [acceptance.md - Consulta de Livros](../tests/acceptance/acceptance.md#feature-consulta-de-livros) |
-| RF07 | Buscar livros por título ou ISBN | ✅ | [acceptance.md - Consulta de Livros](../tests/acceptance/acceptance.md#feature-consulta-de-livros) |
-| RF08 | Atualizar e excluir livros | ✅ | [acceptance.md - Atualização/Exclusão](../tests/acceptance/acceptance.md#feature-atualização-de-livros) |
-| RF09 | Criar empréstimos com validações | ✅ | [acceptance.md - Criação de Empréstimos](../tests/acceptance/acceptance.md#3-gerenciamento-de-empréstimos) |
-| RF10 | Listar empréstimos com detalhes completos | ✅ | [acceptance.md - Consulta de Empréstimos](../tests/acceptance/acceptance.md#feature-consulta-de-empréstimos) |
-| RF11 | Devolver livros com cálculo de multa | ✅ | [acceptance.md - Devolução de Livros](../tests/acceptance/acceptance.md#feature-devolução-de-livros) |
-| RF12 | Calcular status automático dos livros | ✅ | [acceptance.md - Controle de Status](../tests/acceptance/acceptance.md#4-regras-de-negócio) |
-| RF13 | Calcular multas por atraso (R$ 1,00/dia) | ✅ | [acceptance.md - Cálculo de Multas](../tests/acceptance/acceptance.md#feature-cálculo-de-multas) |
-| RF14 | Validar integridade de dados | ✅ | [acceptance.md - Validações](../tests/acceptance/acceptance.md#feature-validações-de-integridade) |
+Veja [aqui](./requirements.md#funcionalidades-principais)
 
 ## 1.4 Requisitos Não Funcionais
 
