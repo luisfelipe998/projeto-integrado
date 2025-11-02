@@ -4,7 +4,7 @@ O deployment acontece automaticamente ao ser feito um pull request para a branch
 
 ## Ambiente de Produção: Render
 
-A aplicação está configurada para deploy automático na plataforma **[Render](https://projeto-integrado-vbaa.onrender.com)** com a seguinte arquitetura:
+A aplicação está configurada para deploy automático na plataforma **[Render](https://render.com)** com a seguinte arquitetura:
 
 - **Web Service**: Hospedagem da API Node.js
 - **PostgreSQL Database**: Banco de dados gerenciado pelo Render
