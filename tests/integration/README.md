@@ -21,7 +21,7 @@ Os testes de integração verificam se os repositórios funcionam corretamente c
 
 ```bash
 # Executar testes de integração
-npm run test:local:integration
+npm run test:integration
 ```
 
 ## Requisitos

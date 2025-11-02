@@ -7,11 +7,16 @@ module.exports = {
     '^.+\\.ts$': 'ts-jest',
   },
   testTimeout: 120000, // 2 minutes timeout for integration tests
-  setupFilesAfterEnv: [],
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/index.ts',
     '!src/**/*.d.ts',
   ],
-  coverageDirectory: 'artifacts/integration'
+  coverageDirectory: 'artifacts/integration',
+  globals: {
+    'ts-jest': {
+      useESM: false
+    }
+  },
+  setupFiles: ['<rootDir>/tests/integration/jest-setup.js']
 };
