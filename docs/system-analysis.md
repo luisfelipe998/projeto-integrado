@@ -21,7 +21,6 @@ O sistema é direcionado para bibliotecas que necessitam de uma solução digita
 
 **Fora do escopo:**
 - Interface gráfica (apenas API)
-- Sistema de autenticação/autorização
 - Integração com sistemas externos
 - Reserva de livros
 - Renovação de empréstimos
