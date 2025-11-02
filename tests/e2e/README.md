@@ -23,4 +23,4 @@ Os testes são organizados em coleções usando Bruno (arquivos .bru) e cobrem o
 
 Para executar os testes e2e, certifique-se de que o servidor da API esteja rodando e use o Bruno CLI ou a aplicação desktop do Bruno para executar a coleção de testes.
 
-Você pode executar `npm test:local:e2e` para automaticamente rodar os testes e gerar o relatório.
+Você pode executar `npm test:e2e` para automaticamente rodar os testes e gerar o relatório.

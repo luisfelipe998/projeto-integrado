@@ -8,3 +8,7 @@ A aplicação está configurada para deploy automático na plataforma **[Render]
 
 - **Web Service**: Hospedagem da API Node.js
 - **PostgreSQL Database**: Banco de dados gerenciado pelo Render
+
+## Testes
+
+Os testes são executados automaticamente ao criar um Pull request e/ou entrar um commit na main. Os artefatos são salvos na própria action que executou os testes e estão disponíveis lá para fazer download para auditoria.

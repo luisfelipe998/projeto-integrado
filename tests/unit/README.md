@@ -6,7 +6,7 @@ Este diretório contém os testes unitários para a API da Biblioteca. Os testes
 
 ### Executar todos os testes com cobertura
 ```bash
-npm run test:local
+npm run test:unit
 ```
 
 ### Executar testes sem cobertura
@@ -40,7 +40,7 @@ Os testes utilizam:
 
 ## Relatórios de Cobertura
 
-Após executar `npm run test:local`, os relatórios de cobertura são gerados em:
+Após executar `npm run test:unit`, os relatórios de cobertura são gerados em:
 - **HTML**: `artifacts/unit/lcov-report/index.html`
 - **JSON**: `artifacts/unit/coverage-final.json`
 - **LCOV**: `artifacts/unit/lcov.info`

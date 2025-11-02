@@ -14,9 +14,9 @@ O projeto possui os seguintes scripts npm configurados no `package.json`:
 - `npm run stop:local:container` - Para os containers Docker
 
 ### Testes
-- `npm run test:local` - Executa testes unitários com cobertura
-- `npm run test:local:integration` - Executa testes de integração com cobertura
-- `npm run test:local:e2e` - Executa testes end-to-end completos
+- `npm run test:unit` - Executa testes unitários com cobertura
+- `npm run test:integration` - Executa testes de integração com cobertura
+- `npm run test:e2e` - Executa testes end-to-end completos
 
 ### Qualidade de Código
 - `npm run lint` - Executa análise estática do código com ESLint

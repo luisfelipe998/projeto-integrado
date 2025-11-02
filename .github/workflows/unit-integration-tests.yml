@@ -2,7 +2,9 @@ name: Unit and Integration Tests
 
 on:
   push:
+    branches-ignore: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
   unit-and-integration-tests:
@@ -43,12 +45,12 @@ jobs:
       run: npm run build
 
     - name: Run unit tests
-      run: npm run test:local
+      run: npm run test:unit
       env:
         CI: true
 
     - name: Run integration tests
-      run: npm run test:local:integration
+      run: npm run test:integration
       env:
         CI: true
         DATABASE_URL: postgresql://postgres:postgres@localhost:5432/library_test

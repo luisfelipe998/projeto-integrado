@@ -8,9 +8,9 @@
     "start:local": "npm run build && node dist/index.js",
     "start:local:container": "docker compose up --build -d",
     "stop:local:container": "docker compose down",
-    "test:local": "jest --config jest.unit.config.js --coverage",
-    "test:local:integration": "jest --config jest.integration.config.js --coverage",
-    "test:local:e2e": "npm run stop:local:container && npm run start:local:container && mkdir -p artifacts/e2e && cd ./tests/e2e/collection/library_api && sleep 5 && npx bru run --env local --reporter-html results.html && cd ../../../../ && mv ./tests/e2e/collection/library_api/results.html ./artifacts/e2e/results.html && npm run stop:local:container",
+    "test:unit": "jest --config jest.unit.config.js --coverage",
+    "test:integration": "jest --config jest.integration.config.js --coverage",
+    "test:e2e": "npm run stop:local:container && npm run start:local:container && mkdir -p artifacts/e2e && cd ./tests/e2e/collection/library_api && sleep 5 && npx bru run --env local --reporter-html results.html && cd ../../../../ && mv ./tests/e2e/collection/library_api/results.html ./artifacts/e2e/results.html && npm run stop:local:container",
     "lint": "npx eslint src/**/*.ts",
     "lint:fix": "npx eslint src/**/*.ts --fix"
   },
