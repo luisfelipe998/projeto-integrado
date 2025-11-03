@@ -212,16 +212,6 @@ flowchart TB
 | **Sistema (API)** | Bruno CLI | ✅ Implementado | Execução de coleções da API (ponta a ponta via HTTP) |
 | **Aceitação** | Gherkin | ✅ Implementado | Validação (manual) contra critérios de aceite |
 
-
-## 6.3 Critérios de Aceitação
-
-✅ **Atendidos**:
-- Todos os requisitos possuem pelo menos um caso de teste associado
-- 100% dos testes críticos são executados via coleção Bruno
-- Evidências de teste registradas na coleção de testes
-- Implementação de testes automatizados (Jest)
-- Nenhuma falha de alta severidade (não há sistema de classificação implementado)
-
 ---
 
 # 7 Estrutura de Diretórios
@@ -229,7 +219,7 @@ flowchart TB
 ```
 TrabalhoGB/
 ├── src/
-│   ├── application/              # Camada de aplicação
+│   ├── application/             # Camada de aplicação
 │   │   ├── user/                # Módulo de usuários
 │   │   ├── book/                # Módulo de livros
 │   │   └── loan/                # Módulo de empréstimos
@@ -237,13 +227,12 @@ TrabalhoGB/
 │   │   └── postgres/            # Implementações PostgreSQL
 │   └── index.ts                 # Ponto de entrada
 ├── db/                          # Scripts de banco
-├── collection/                  # Testes da API
-│   └── Library API/             # Coleção Bruno
 ├── docs/                        # Documentação
+├── tests/                       # Testes unitários, de integração, ponta-a-ponta e de aceitação
 ├── docker-compose.yml           # Orquestração
 ├── dockerfile                   # Imagem da aplicação
 ├── package.json                 # Dependências Node.js
-└── tsconfig.json               # Configuração TypeScript
+└── tsconfig.json                # Configuração TypeScript
 ```
 
 # 8 Melhores Práticas
